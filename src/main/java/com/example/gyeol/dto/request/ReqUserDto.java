@@ -9,7 +9,7 @@ import lombok.*;
 @Builder
 @Getter
 @Setter
-public class UserDto {
+public class ReqUserDto {
     @jakarta.validation.constraints.NotBlank
     @jakarta.validation.constraints.Size(max = 50)
     private String username;
