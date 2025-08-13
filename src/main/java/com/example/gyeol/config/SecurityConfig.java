@@ -27,7 +27,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll() // 로그인/회원가입 열어두기
+                        .requestMatchers("/api/auth/register", "/api/auth/login").permitAll() // 로그인/회원가입 열어두기
                         .anyRequest().authenticated()
                 )
                 // UsernamePasswordAuthenticationFilter 전에 JWT 필터 실행

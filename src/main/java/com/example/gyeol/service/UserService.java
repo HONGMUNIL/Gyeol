@@ -7,6 +7,7 @@ import com.example.gyeol.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import com.example.gyeol.security.jwt.JwtUtil;
 
 @Service
 @RequiredArgsConstructor
@@ -14,6 +15,7 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JwtUtil jwtUtil;
 
 
     public Long register(ReqUserDto reqUserDto){
@@ -35,5 +37,10 @@ public class UserService {
             throw new IllegalArgumentException("패스워드가 일치하지 않습니다.");
         }
         return users; // 이후 JWT 붙일 때 여기서 토큰 발급로직 추가
+    }
+
+    public Users getById(Long userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("사용자가 존재하지 않습니다"));
     }
 }

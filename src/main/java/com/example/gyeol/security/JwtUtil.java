@@ -23,8 +23,8 @@ import java.util.Date;
 @Component
 public class JwtUtil {
 
-    private final SecretKey key;            // HS256 서명용 비밀키
-    private final long accessValidityMs;    // yml의 jwt.access-token-validity-ms
+    private final SecretKey key;
+    private final long accessValidityMs;
 
     public JwtUtil(
             @Value("${jwt.secret}") String secretBase64,
